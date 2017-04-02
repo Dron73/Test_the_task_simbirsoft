@@ -31,15 +31,14 @@ public class Test_Create_Folder {
                         + "Templated: " + templated + "\n"
                         + "CodeStatus status: " + codeStatus + "\n");
                 System.out.println(stringBuilder.toString());
-            } else {
+            } else{
                 String message = jsonPath.get("message").toString();
                 String description = jsonPath.get("description").toString();
                 String error = jsonPath.get("error").toString();
-
                 stringBuilder.append("Message: " + message + ".\n"
                         + "Description: " + description + ".\n"
                         + "Error: " + error + ".\n");
-                System.out.println(stringBuilder);
+                System.out.print(stringBuilder);
             }
         } catch (Throwable e) {
             e.printStackTrace();
