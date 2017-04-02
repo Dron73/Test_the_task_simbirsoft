@@ -7,39 +7,40 @@ import org.testng.annotations.Test;
 import static com.jayway.restassured.RestAssured.given;
 
 public class Test_Create_Folder {
-
-    StringBuilder stringBuilder = new StringBuilder();
-
     @Test
     public void testCreateFolder() {
-        String nameFolder = "024";
-        System.out.println("Тест на создание: ");
+        String nameFolder = "000";
+        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println("Тест на создание:");
         try {
             Response response = given()
                     .contentType("application/json; charset=utf-8")
                     .headers("Authorization", "OAuth AQAAAAAaz8MGAADLW2OZywZUMEcHtQH8YoPcLb4")
                     .when()
                     .put("https://cloud-api.yandex.net/v1/disk/resources?path=" + nameFolder)
-                    .then()
-                    .extract().response();
-            JsonPath jp = new JsonPath(response.asString());
+                    .then().extract().response();
+
+            JsonPath jsonPath = new JsonPath(response.asString());
             int codeStatus = response.getStatusCode();
             if (codeStatus == 201) {
-                String href = jp.get("href").toString();
-                String method = jp.get("method").toString();
-                String templated = jp.get("templated").toString();
-                stringBuilder.append("href: " + href + "\n"
-                        + "method: " + method + "\n"
-                        + "templated: " + templated + "\n"
-                        + "codeStatus status: " + codeStatus);
+                String href = jsonPath.get("href").toString();
+                String method = jsonPath.get("method").toString();
+                String templated = jsonPath.get("templated").toString();
+                stringBuilder.append("Href: " + href + "\n"
+                        + "Method: " + method + "\n"
+                        + "Templated: " + templated + "\n"
+                        + "CodeStatus status: " + codeStatus + "\n");
                 System.out.println(stringBuilder.toString());
             } else {
-                String message = jp.get("message").toString();
-                stringBuilder.append("Message: " + message + "\n"
-                        + "codeStatus status: " + codeStatus);
-                System.out.println(stringBuilder.toString());
+                String message = jsonPath.get("message").toString();
+                String description = jsonPath.get("description").toString();
+                String error = jsonPath.get("error").toString();
+
+                stringBuilder.append("Message: " + message + ".\n"
+                        + "Description: " + description + ".\n"
+                        + "Error: " + error + ".\n");
+                System.out.println(stringBuilder);
             }
-            System.out.println();
         } catch (Throwable e) {
             e.printStackTrace();
         }
