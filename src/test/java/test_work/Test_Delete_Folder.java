@@ -19,7 +19,7 @@ public class Test_Delete_Folder {
                     .then()
                     .extract().response();
             if (response.getStatusCode() == 204) {
-                System.out.println("Папка "+ nameFolder + " успешно удалена" + response.getStatusCode());
+                System.out.println("Папка "+ nameFolder + " успешно удалена");
             } else if (response.getStatusCode() == 404) {
                 System.out.println("Папка " + nameFolder + " не найдена!");
             }
