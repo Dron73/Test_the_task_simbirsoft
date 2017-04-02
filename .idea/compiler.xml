@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="test2" />
         <module name="Test_the_task_simbirsoft" />
+        <module name="Test_yandex_api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="test2" target="1.8" />
       <module name="Test_the_task_simbirsoft" target="1.8" />
+      <module name="Test_yandex_api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
