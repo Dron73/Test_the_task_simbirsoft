@@ -11,7 +11,7 @@ public class Test_Delete_Folder {
 
     @Test
     public void testDeleteFolder204() {
-        String nameFolder = "004"; //  	OK
+        String nameFolder = "delete204"; //  	OK
 
         given()
                 .contentType("application/json; charset=utf-8")
