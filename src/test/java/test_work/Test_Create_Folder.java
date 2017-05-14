@@ -8,19 +8,19 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class Test_Create_Folder {
 
-    @Test
-    public void testCreateFolder201() {
-        String nameFolder = "Тест201"; // OK
-
-        JsonPath responseJsonPath = given()
-                .contentType("application/json; charset=utf-8")
-                .headers("Authorization", "OAuth AQAAAAAaz8MGAADLW2OZywZUMEcHtQH8YoPcLb4")
-                .when()
-                .put("https://cloud-api.yandex.net:443/v1/disk/resources?path=" + nameFolder)
-                .then()
-                .assertThat().statusCode(201).body("method", equalTo("GET"))
-                .extract().jsonPath();
-    }
+//    @Test
+//    public void testCreateFolder201() {
+//        String nameFolder = "Тест201"; // OK
+//
+//        JsonPath responseJsonPath = given()
+//                .contentType("application/json; charset=utf-8")
+//                .headers("Authorization", "OAuth AQAAAAAaz8MGAADLW2OZywZUMEcHtQH8YoPcLb4")
+//                .when()
+//                .put("https://cloud-api.yandex.net:443/v1/disk/resources?path=" + nameFolder)
+//                .then()
+//                .assertThat().statusCode(201).body("method", equalTo("GET"))
+//                .extract().jsonPath();
+//    }
 
     @Test
     public void testCreateFolder400() {
